@@ -118,7 +118,7 @@ for(i in 1:length(user_ids))
     # Check that the user is not already in the list
     if (is.element(followingLogin[j], users) == FALSE)
     {
-      # Add user to list of users
+      # Add user to list
       users[length(users) + 1] = followingLogin[j]
       
       # Retrieve each users data
@@ -153,14 +153,25 @@ for(i in 1:length(user_ids))
   next
 }
 
-#Use plotly to graph
+# Use plotly to graph
 Sys.setenv("plotly_username"="allenc5")
 Sys.setenv("plotly_api_key"="")
 
+# Plot followers v repositories coloured by year
 plot1 = plot_ly(data = usersDB, x = ~repos, y = ~followers, 
                 text = ~paste("Followers: ", followers, "<br>Repositories: ", 
                               repos, "<br>Date Created:", dateCreated), color = ~dateCreated)
 plot1
+
+# Send to plotly
+api_create(plot1, filename = "Followers vs Repositories")
+
+# Plot followers v following coloured by year
+plot2 = plot_ly(data = usersDB, x = ~following, y = ~followers, text = ~paste("Followers: ", followers, "<br>Following: ", following), color = ~dateCreated)
+plot2
+
+# Send to plotly
+api_create(plot2, filename = "Followers vs Following")
 
 
 
