@@ -42,24 +42,27 @@ myData$following #displays number of people I am following
 following = fromJSON("https://api.github.com/users/allenc5/following")
 following$login #gives the names of all the people I am following
 
-myData$public_repos #displays the number of repositories I have
+myData$public_repos #displays the number of public repositories I have
 
 repos = fromJSON("https://api.github.com/users/allenc5/repos")
-repos$name #Gives of the names of my public repositories
+repos$name #My public repositories
 repos$created_at #Gives details of the dates the repositories were created 
-repos$full_name #gives names of repositiories
+repos$full_name #Gives names of repositories
 
 myData$bio #Displays my bio
 
+LCARepos <- fromJSON("https://api.github.com/repos/allenc5/Software-Engineering/commits")
+LCARepos$commit$message #Each commits description for the LCA assignment repository 
+
 #Interrogate the Github API to extract data from another account by switching the username
 fabpotData = fromJSON("https://api.github.com/users/fabpot")
-fabpotData$followers
+fabpotData$followers #lists num followers fabpot has
 
 followers = fromJSON("https://api.github.com/users/fabpot/followers")
 followers$login #gives user names of all Fabio's followers
 
-fabpotData$following 
-fabpotData$public_repos 
+fabpotData$following #lists number of people fabpot follows
+fabpotData$public_repos #lists number of repositories fabpot 
 fabpotData$bio 
 
 
