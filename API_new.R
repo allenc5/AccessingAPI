@@ -49,8 +49,8 @@ myData$public_repos # Displays the number of public repositories I have
 
 repos = fromJSON("https://api.github.com/users/allenc5/repos")
 repos$name # My public repositories
-repos$created_at # Gives details of the dates the repositories were created 
-repos$full_name # Gives names of repositories
+repos$created_at # Gives details of the dates my public repositories were created 
+repos$full_name # Gives names of my public repositories
 
 myData$bio # Displays my bio
 
@@ -79,7 +79,7 @@ stop_for_status(newData)
 extract = content(newData)
 # Converts followers into a dataframe
 githubDB = jsonlite::fromJSON(jsonlite::toJSON(extract))
-githubDB$login
+githubDB$login # Gives the user names of all Nelsons followers
 
 # Retrieve a list of usernames
 id = githubDB$login
@@ -155,7 +155,7 @@ for(i in 1:length(user_ids))
 
 # Use plotly to graph
 Sys.setenv("plotly_username"="allenc5")
-Sys.setenv("plotly_api_key"="")
+Sys.setenv("plotly_api_key"="aoqQcoGT1PSzwndFAejk")
 
 # Plot followers v repositories coloured by year
 plot1 = plot_ly(data = usersDB, x = ~repos, y = ~followers, 
